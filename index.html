@@ -2,11 +2,133 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width initial-scale=1.0">
+    <title>Github Followers</title>
+    <link href="css/font-awesome.min.css" rel="stylesheet" media="all">
     <link href="css/app.css" rel="stylesheet" media="all">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 </head>
 <body>
+<div class="followers-app app">
+    <div class="search">
+        <form class="search__form">
+            <label for="search-input" class="search__label">
+                Enter a github username
+            </label>
+            <input id="search-input" class="search__input"
+                   placeholder="... Enter a username">
+            <button type="submit" class="search__btn app__btn app__btn--sm">
+                <span class="search__text">Search</span>
+                <span class="search__icon">
+                    <i class="fa fa-search"></i>
+                </span>
+            </button>
+        </form>
+    </div>
+    <div class="search-loader">
+        <div class="state">
+            <div class="state__icon">
+                <i class="fa fa-spinner fa-spin"></i>
+            </div>
+            <div class="state__message">
+                Fetching user details
+            </div>
+        </div>
+    </div>
+    <div class="results">
+        <div class="alert alert--search alert--hidden">
+            <div class="alert__message">
+                User was found successfully
+            </div>
+            <a class="alert__dismiss">x</a>
+        </div>
+        <div class="results__section">
+            <div class="results__section-title">
+                PROFILE
+            </div>
+            <div class="results__card">
+                <div class="card">
+                    <div class="card__content">
+                        <div class="results__user">
+                            <div class="profile">
+                                <div class="profile__avatar">
+                                    <img class="profile__img" src="https://placehold.it/200x200" alt="profile image">
+                                </div>
+                                <div class="profile__info">
+                                    <div class="profile__name profile__name--lg">
+                                        John Doe
+                                        <span class="profile__username">(kingstuffy)</span>
+                                    </div>
+                                    <div class="profile__repos">
+                                        57 repos
+                                    </div>
+                                    <div class="profile__followers">
+                                        235 follower(s)/ Following 222
+                                    </div>
+                                    <a class="profile__github-link" target="_blank" href="#">
+                                        View on github
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="results__user-none">
+                            <div class="state">
+                                <div class="state__icon">
+                                    <i class="fa fa-user-circle-o"></i>
+                                </div>
+                                <div class="state__message">
+                                    User not found
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="results__section">
+            <div class="results__section-title">
+                FOLLOWERS
+            </div>
+            <div class="results__card">
+                <div class="card card--no-bs">
+                    <div class="results__ff">
+                        <div class="card__content">
+                            <ul class="card__list">
+                            </ul>
+                            <div class="card__extra">
+                                <button class="app__btn results__ff-more">
+                                    Load More
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="results__ff-none">
+                        <div class="state">
+                            <div class="state__icon">
+                                <i class="fa fa-user-circle-o"></i>
+                            </div>
+                            <div class="state__message">
+                                No followers found
+                            </div>
+                        </div>
+                    </div>
+                    <div class="results__ff-loader">
+                        <div class="state">
+                            <div class="state__icon">
+                                <i class="fa fa-spinner fa-spin"></i>
+                            </div>
+                            <div class="state__message">
+                                Fetching followers
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
+<script src="//unpkg.com/cross-fetch/dist/cross-fetch.js"></script>
 <script src="js/app.js"></script>
 </body>
 </html>
