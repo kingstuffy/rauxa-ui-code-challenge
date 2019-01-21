@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width initial-scale=1.0">
     <title>Github Followers</title>
+    <link href="css/font-awesome.min.css" rel="stylesheet" media="all">
     <link href="css/app.css" rel="stylesheet" media="all">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 </head>
@@ -17,7 +18,12 @@
             </label>
             <input id="search-input" class="search__input"
                    placeholder="... Enter a username">
-            <input type="submit" class="search__btn app__btn" value="Search">
+            <button type="submit" class="search__btn app__btn app__btn--sm">
+                <span class="search__text">Search</span>
+                <span class="search__icon">
+                    <i class="fa fa-search"></i>
+                </span>
+            </button>
         </form>
     </div>
     <div class="results">
@@ -26,6 +32,16 @@
                 User was found successfully
             </div>
             <a class="alert__dismiss">x</a>
+        </div>
+        <div class="results__loader">
+            <div class="state">
+                <div class="state__icon">
+                    <i class="fa fa-spinner fa-spin"></i>
+                </div>
+                <div class="state__message">
+                    Fetching user details
+                </div>
+            </div>
         </div>
         <div class="results__section">
             <div class="results__section-title">
@@ -73,9 +89,29 @@
                                              alt="profile image">
                                     </div>
                                     <div class="profile__info">
-                                        <div class="profile__name profile__name--lg">
+                                        <div class="profile__name">
                                             John Doe
-                                            <span class="profile__username">(kingstuffy)</span>
+
+                                        </div>
+                                        <a class="profile__github-link" target="_blank" href="#">
+                                            View profile
+                                        </a>
+                                        <a class="profile__github-link" target="_blank" href="#">
+                                            View on github
+                                        </a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="card__item">
+                                <div class="profile">
+                                    <div class="profile__avatar">
+                                        <img class="profile__img" src="https://placehold.it/200x200"
+                                             alt="profile image">
+                                    </div>
+                                    <div class="profile__info">
+                                        <div class="profile__name">
+                                            John Doe
+
                                         </div>
                                         <a class="profile__github-link" target="_blank" href="#">
                                             View on github
@@ -90,9 +126,9 @@
                                              alt="profile image">
                                     </div>
                                     <div class="profile__info">
-                                        <div class="profile__name profile__name--lg">
+                                        <div class="profile__name">
                                             John Doe
-                                            <span class="profile__username">(kingstuffy)</span>
+
                                         </div>
                                         <a class="profile__github-link" target="_blank" href="#">
                                             View on github
@@ -107,9 +143,9 @@
                                              alt="profile image">
                                     </div>
                                     <div class="profile__info">
-                                        <div class="profile__name profile__name--lg">
+                                        <div class="profile__name">
                                             John Doe
-                                            <span class="profile__username">(kingstuffy)</span>
+
                                         </div>
                                         <a class="profile__github-link" target="_blank" href="#">
                                             View on github
@@ -124,9 +160,9 @@
                                              alt="profile image">
                                     </div>
                                     <div class="profile__info">
-                                        <div class="profile__name profile__name--lg">
+                                        <div class="profile__name">
                                             John Doe
-                                            <span class="profile__username">(kingstuffy)</span>
+
                                         </div>
                                         <a class="profile__github-link" target="_blank" href="#">
                                             View on github
@@ -141,26 +177,9 @@
                                              alt="profile image">
                                     </div>
                                     <div class="profile__info">
-                                        <div class="profile__name profile__name--lg">
+                                        <div class="profile__name">
                                             John Doe
-                                            <span class="profile__username">(kingstuffy)</span>
-                                        </div>
-                                        <a class="profile__github-link" target="_blank" href="#">
-                                            View on github
-                                        </a>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="card__item">
-                                <div class="profile">
-                                    <div class="profile__avatar">
-                                        <img class="profile__img" src="https://placehold.it/200x200"
-                                             alt="profile image">
-                                    </div>
-                                    <div class="profile__info">
-                                        <div class="profile__name profile__name--lg">
-                                            John Doe
-                                            <span class="profile__username">(kingstuffy)</span>
+
                                         </div>
                                         <a class="profile__github-link" target="_blank" href="#">
                                             View on github
@@ -181,13 +200,23 @@
                             </button>
                         </div>
                     </div>
-                    <div class="card__content--empty">
-                        <div class="empty-state">
-                            <div class="empty-state__icon">
-
+                    <div class="results__ff-none">
+                        <div class="state">
+                            <div class="state__icon">
+                                <i class="fa fa-user-circle-o"></i>
                             </div>
-                            <div class="empty-state__message">
+                            <div class="state__message">
                                 No followers found
+                            </div>
+                        </div>
+                    </div>
+                    <div class="results__ff-loading">
+                        <div class="state">
+                            <div class="state__icon">
+                                <i class="fa fa-spinner fa-spin"></i>
+                            </div>
+                            <div class="state__message">
+                                Fetching followers
                             </div>
                         </div>
                     </div>
