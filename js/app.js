@@ -4,7 +4,17 @@ var followersApp = {
     api: {
         baseUrl: 'https://api.github.com'
     },
-    main: {}
+    main: {},
+    utils: {
+        getParam: function () {
+            var hash = document.location.hash;
+            return decodeURIComponent(hash.length ? hash.substring(1) : '');
+        },
+        insertParam: function (value) {
+            value = encodeURIComponent(value);
+            document.location.hash = value;
+        }
+    }
 };
 
 (function display(app) {
@@ -49,6 +59,14 @@ var followersApp = {
     function initSearch(fetchUserCb, fetchFollowersCb) {
         fetchUser = fetchUserCb;
 
+        var queryUser = app.utils.getParam();
+        if (queryUser) {
+            searchInput.value = queryUser;
+            fetchUserCb(queryUser);
+            fixSearch();
+            onSearchStart();
+        }
+
         searchBtn.addEventListener('click', function (e) {
             e.preventDefault();
             fixSearch();
@@ -61,6 +79,7 @@ var followersApp = {
 
             fetchUserCb(searchInput.value);
             onSearchStart();
+            app.utils.insertParam(searchInput.value);
         });
 
         ffLoadMore.addEventListener('click', function (e) {
