@@ -83,6 +83,8 @@ var followersApp = {
         searchLoader.style.display = 'block';
         resultsEl.style.display = 'none';
         dismissSearchAlert();
+        hideLoadMore();
+
     }
 
     function onSearchEnd(user) {
@@ -110,7 +112,7 @@ var followersApp = {
     function onFollowersLoadEnd(followers) {
         ffLoader.style.display = 'none';
 
-        if (!followers.length) {
+        if (!followers || !followers.length) {
             ffResultsEl.style.display = 'none';
             ffNoneEl.style.display = 'block';
             return;
@@ -261,7 +263,6 @@ var followersApp = {
             .then(function (json) {
                 var links = getLinks(lastResponse.headers.get('link'));
                 var nextUrl = links._next;
-                console.log(links, nextUrl);
                 if (lastResponse.status === 200) {
                     onFollowersFetch(null, json, nextUrl);
                     return;
