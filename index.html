@@ -2,10 +2,181 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width initial-scale=1.0">
+    <title>Github Followers</title>
     <link href="css/app.css" rel="stylesheet" media="all">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 </head>
 <body>
+
+<div class="app app--fixed">
+    <div class="search search--fixed">
+        <form class="search__form">
+            <label for="search-input" class="search__label">
+                Enter a github username
+            </label>
+            <input id="search-input" class="search__input">
+            <input type="submit" class="search__btn app__btn" value="Search">
+        </form>
+    </div>
+    <div class="alert alert--success alert--top">
+        <div class="alert__message">
+            User was found successfully
+        </div>
+        <a class="alert__dismiss">x</a>
+    </div>
+    <div class="results">
+        <div class="results__section">
+            <div class="results__section-title">
+                PROFILE
+            </div>
+            <div class="results__card">
+                <div class="card">
+                    <div class="card__content">
+                        <div class="profile">
+                            <div class="profile__avatar">
+                                <img class="profile__img" src="https://placehold.it/200x200" alt="profile image">
+                            </div>
+                            <div class="profile__info">
+                                <div class="profile__name profile__name--lg">
+                                    John Doe
+                                    <span class="profile__username">(kingstuffy)</span>
+                                </div>
+                                <div class="profile__repos">
+                                    57 repos
+                                </div>
+                                <div class="profile__followers">
+                                    235 follower(s)/ Following 222
+                                </div>
+                                <a class="profile__github-link" target="_blank" href="#">
+                                    View on github
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="results__section">
+            <div class="results__section-title">
+                FOLLOWERS
+            </div>
+            <div class="results__card">
+                <div class="card">
+                    <ul class="card__list">
+                        <li class="card__item">
+                            <div class="profile">
+                                <div class="profile__avatar">
+                                    <img class="profile__img" src="https://placehold.it/200x200" alt="profile image">
+                                </div>
+                                <div class="profile__info">
+                                    <div class="profile__name profile__name--lg">
+                                        John Doe
+                                        <span class="profile__username">(kingstuffy)</span>
+                                    </div>
+                                    <a class="profile__github-link" target="_blank" href="#">
+                                        View on github
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="card__item">
+                            <div class="profile">
+                                <div class="profile__avatar">
+                                    <img class="profile__img" src="https://placehold.it/200x200" alt="profile image">
+                                </div>
+                                <div class="profile__info">
+                                    <div class="profile__name profile__name--lg">
+                                        John Doe
+                                        <span class="profile__username">(kingstuffy)</span>
+                                    </div>
+                                    <a class="profile__github-link" target="_blank" href="#">
+                                        View on github
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="card__item">
+                            <div class="profile">
+                                <div class="profile__avatar">
+                                    <img class="profile__img" src="https://placehold.it/200x200" alt="profile image">
+                                </div>
+                                <div class="profile__info">
+                                    <div class="profile__name profile__name--lg">
+                                        John Doe
+                                        <span class="profile__username">(kingstuffy)</span>
+                                    </div>
+                                    <a class="profile__github-link" target="_blank" href="#">
+                                        View on github
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="card__item">
+                            <div class="profile">
+                                <div class="profile__avatar">
+                                    <img class="profile__img" src="https://placehold.it/200x200" alt="profile image">
+                                </div>
+                                <div class="profile__info">
+                                    <div class="profile__name profile__name--lg">
+                                        John Doe
+                                        <span class="profile__username">(kingstuffy)</span>
+                                    </div>
+                                    <a class="profile__github-link" target="_blank" href="#">
+                                        View on github
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="card__item">
+                            <div class="profile">
+                                <div class="profile__avatar">
+                                    <img class="profile__img" src="https://placehold.it/200x200" alt="profile image">
+                                </div>
+                                <div class="profile__info">
+                                    <div class="profile__name profile__name--lg">
+                                        John Doe
+                                        <span class="profile__username">(kingstuffy)</span>
+                                    </div>
+                                    <a class="profile__github-link" target="_blank" href="#">
+                                        View on github
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="card__item">
+                            <div class="profile">
+                                <div class="profile__avatar">
+                                    <img class="profile__img" src="https://placehold.it/200x200" alt="profile image">
+                                </div>
+                                <div class="profile__info">
+                                    <div class="profile__name profile__name--lg">
+                                        John Doe
+                                        <span class="profile__username">(kingstuffy)</span>
+                                    </div>
+                                    <a class="profile__github-link" target="_blank" href="#">
+                                        View on github
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="alert alert--danger alert--top">
+                        <div class="alert__message">
+                            An error occurred on the server
+                        </div>
+                        <a class="alert__dismiss">x</a>
+                    </div>
+                    <div class="card__extra">
+                        <button class="app__btn" value="Search">
+                            Load More
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <script src="js/app.js"></script>
 </body>

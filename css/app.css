@@ -1,0 +1,108 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    min-height: 100%;
+    min-width: 100%;
+    font-size: 100%;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    font-family: 'Roboto', sans-serif;
+
+}
+
+body {
+    min-width: 100%;
+    min-height: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+}
+
+.app--fixed {
+    padding-top: 120px;
+}
+
+.search {
+    padding: 15% 13% 3%;
+}
+
+.search__form {
+    text-align: center;
+}
+
+.search__label {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+.search__input {
+    border-radius: 2px;
+    font-size: 15px;
+    height: 46px;
+    padding: 10px 16px;
+    line-height: 1.3333333;
+    display: block;
+    width: 100%;
+    border: 1px solid #ccc;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    margin-bottom: 15px;
+}
+
+.app__btn {
+    padding: 13px 60px;
+    border-radius: 27px;
+    margin-right: 10px;
+    font-size: 13px;
+    text-transform: uppercase;
+    box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    margin-bottom: 10px;
+    background-color: #2196f3;
+    color: #fff;
+}
+
+.search--fixed {
+    position: fixed;
+    margin-bottom: 40px;
+    box-shadow: 0 1px 20px 0 rgba(46, 61, 73, .2);
+    background-color: #fff;
+    padding: 15px 4%;
+    top: 0;
+    width: 100%;
+}
+
+.search--fixed .search__label {
+    display: none;
+}
+
+.search--fixed .search__input {
+    display: inline-block;
+    width: 240px;
+    padding: 1px 30px;
+    margin-right: 10px;
+    margin-bottom: 0;
+}
