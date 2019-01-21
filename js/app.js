@@ -17,6 +17,7 @@ var followersApp = {
     }
 };
 
+//uses IIFE to keep the global object clean
 (function display(app) {
     var searchEl = app.root.querySelector('.search');
     var searchInput = app.root.querySelector('.search__input');
