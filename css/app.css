@@ -22,10 +22,6 @@ body {
     margin: 0;
 }
 
-.app--fixed {
-    padding-top: 120px;
-}
-
 .search {
     padding: 15% 13% 3%;
 }
@@ -58,6 +54,29 @@ body {
     margin-bottom: 15px;
 }
 
+.search--fixed {
+    position: fixed;
+    margin-bottom: 40px;
+    box-shadow: 0 1px 20px 0 rgba(46, 61, 73, .2);
+    background-color: #fff;
+    padding: 15px 4%;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+.search--fixed .search__label {
+    display: none;
+}
+
+.search--fixed .search__input {
+    display: inline-block;
+    width: 240px;
+    padding: 1px 30px;
+    margin-right: 10px;
+    margin-bottom: 0;
+}
+
 .app__btn {
     padding: 13px 60px;
     border-radius: 27px;
@@ -85,24 +104,137 @@ body {
     color: #fff;
 }
 
-.search--fixed {
-    position: fixed;
-    margin-bottom: 40px;
-    box-shadow: 0 1px 20px 0 rgba(46, 61, 73, .2);
-    background-color: #fff;
-    padding: 15px 4%;
-    top: 0;
-    width: 100%;
+.results {
+    padding: 120px 10% 2%;
 }
 
-.search--fixed .search__label {
+.results__section {
+    margin-bottom: 50px;
+}
+
+.results__section-title {
+    margin-bottom: 13px;
+}
+
+.card {
+    background: #fff;
+    box-shadow: 5px 5px 25px 0 rgba(46, 61, 73, 0.2);
+}
+
+.card__content {
+    padding: 30px 40px;
+}
+
+.profile__avatar {
+    display: inline-block;
+    width: 150px;
+    margin-right: 20px;
+    vertical-align: middle;
+}
+
+.profile__img {
+    width: 120px;
+    height: 120px;
+    border-radius: 100%;
+    border: 2px solid #222;
+}
+
+.profile__info {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.profile__name {
+    font-weight: bold;
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+}
+
+.profile__username {
+    font-size: 1.1rem;
+    font-weight: normal;
+}
+
+.profile__repos {
+    margin-bottom: 7px;
+    font-size: 0.9rem;
+}
+
+.profile__followers {
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+}
+
+.profile__github-link {
+    color: #222;
+    text-decoration: none;
+    display: inline-block;
+    padding-bottom: 2px;
+    border-bottom: 1px dotted #222;
+}
+
+.card__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.card__item {
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 10px;
+    padding: 25px 0;
+}
+
+.card__item:last-of-type {
+    border-bottom: 0;
+}
+
+.card__extra {
+    text-align: center;
+}
+
+.alert {
+    margin: 15px auto;
+    position: relative;
+    max-width: 600px;
+    color: #fff;
+    border-radius: 5px;
+    padding: 15px;
+}
+
+.alert--success {
+    background-color: #009688;
+}
+
+.alert--danger {
+    background-color: #f44336;
+}
+
+.alert--hidden {
     display: none;
 }
 
-.search--fixed .search__input {
+.alert__message {
     display: inline-block;
-    width: 240px;
-    padding: 1px 30px;
-    margin-right: 10px;
-    margin-bottom: 0;
+}
+
+.alert__dismiss {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+}
+
+.empty-state {
+    padding: 25% 10%;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .profile {
+        text-align: center;
+    }
+
+    .profile__avatar {
+        margin-bottom: 20px;
+    }
 }

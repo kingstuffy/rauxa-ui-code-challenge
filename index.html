@@ -15,17 +15,18 @@
             <label for="search-input" class="search__label">
                 Enter a github username
             </label>
-            <input id="search-input" class="search__input">
+            <input id="search-input" class="search__input"
+                   placeholder="... Enter a username">
             <input type="submit" class="search__btn app__btn" value="Search">
         </form>
     </div>
-    <div class="alert alert--success alert--top">
-        <div class="alert__message">
-            User was found successfully
-        </div>
-        <a class="alert__dismiss">x</a>
-    </div>
     <div class="results">
+        <div class="alert alert--success alert--top alert--hidden">
+            <div class="alert__message">
+                User was found successfully
+            </div>
+            <a class="alert__dismiss">x</a>
+        </div>
         <div class="results__section">
             <div class="results__section-title">
                 PROFILE
@@ -63,114 +64,132 @@
             </div>
             <div class="results__card">
                 <div class="card">
-                    <ul class="card__list">
-                        <li class="card__item">
-                            <div class="profile">
-                                <div class="profile__avatar">
-                                    <img class="profile__img" src="https://placehold.it/200x200" alt="profile image">
-                                </div>
-                                <div class="profile__info">
-                                    <div class="profile__name profile__name--lg">
-                                        John Doe
-                                        <span class="profile__username">(kingstuffy)</span>
+                    <div class="card__content card__content--followers">
+                        <ul class="card__list">
+                            <li class="card__item">
+                                <div class="profile">
+                                    <div class="profile__avatar">
+                                        <img class="profile__img" src="https://placehold.it/200x200"
+                                             alt="profile image">
                                     </div>
-                                    <a class="profile__github-link" target="_blank" href="#">
-                                        View on github
-                                    </a>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="card__item">
-                            <div class="profile">
-                                <div class="profile__avatar">
-                                    <img class="profile__img" src="https://placehold.it/200x200" alt="profile image">
-                                </div>
-                                <div class="profile__info">
-                                    <div class="profile__name profile__name--lg">
-                                        John Doe
-                                        <span class="profile__username">(kingstuffy)</span>
+                                    <div class="profile__info">
+                                        <div class="profile__name profile__name--lg">
+                                            John Doe
+                                            <span class="profile__username">(kingstuffy)</span>
+                                        </div>
+                                        <a class="profile__github-link" target="_blank" href="#">
+                                            View on github
+                                        </a>
                                     </div>
-                                    <a class="profile__github-link" target="_blank" href="#">
-                                        View on github
-                                    </a>
                                 </div>
-                            </div>
-                        </li>
-                        <li class="card__item">
-                            <div class="profile">
-                                <div class="profile__avatar">
-                                    <img class="profile__img" src="https://placehold.it/200x200" alt="profile image">
-                                </div>
-                                <div class="profile__info">
-                                    <div class="profile__name profile__name--lg">
-                                        John Doe
-                                        <span class="profile__username">(kingstuffy)</span>
+                            </li>
+                            <li class="card__item">
+                                <div class="profile">
+                                    <div class="profile__avatar">
+                                        <img class="profile__img" src="https://placehold.it/200x200"
+                                             alt="profile image">
                                     </div>
-                                    <a class="profile__github-link" target="_blank" href="#">
-                                        View on github
-                                    </a>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="card__item">
-                            <div class="profile">
-                                <div class="profile__avatar">
-                                    <img class="profile__img" src="https://placehold.it/200x200" alt="profile image">
-                                </div>
-                                <div class="profile__info">
-                                    <div class="profile__name profile__name--lg">
-                                        John Doe
-                                        <span class="profile__username">(kingstuffy)</span>
+                                    <div class="profile__info">
+                                        <div class="profile__name profile__name--lg">
+                                            John Doe
+                                            <span class="profile__username">(kingstuffy)</span>
+                                        </div>
+                                        <a class="profile__github-link" target="_blank" href="#">
+                                            View on github
+                                        </a>
                                     </div>
-                                    <a class="profile__github-link" target="_blank" href="#">
-                                        View on github
-                                    </a>
                                 </div>
-                            </div>
-                        </li>
-                        <li class="card__item">
-                            <div class="profile">
-                                <div class="profile__avatar">
-                                    <img class="profile__img" src="https://placehold.it/200x200" alt="profile image">
-                                </div>
-                                <div class="profile__info">
-                                    <div class="profile__name profile__name--lg">
-                                        John Doe
-                                        <span class="profile__username">(kingstuffy)</span>
+                            </li>
+                            <li class="card__item">
+                                <div class="profile">
+                                    <div class="profile__avatar">
+                                        <img class="profile__img" src="https://placehold.it/200x200"
+                                             alt="profile image">
                                     </div>
-                                    <a class="profile__github-link" target="_blank" href="#">
-                                        View on github
-                                    </a>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="card__item">
-                            <div class="profile">
-                                <div class="profile__avatar">
-                                    <img class="profile__img" src="https://placehold.it/200x200" alt="profile image">
-                                </div>
-                                <div class="profile__info">
-                                    <div class="profile__name profile__name--lg">
-                                        John Doe
-                                        <span class="profile__username">(kingstuffy)</span>
+                                    <div class="profile__info">
+                                        <div class="profile__name profile__name--lg">
+                                            John Doe
+                                            <span class="profile__username">(kingstuffy)</span>
+                                        </div>
+                                        <a class="profile__github-link" target="_blank" href="#">
+                                            View on github
+                                        </a>
                                     </div>
-                                    <a class="profile__github-link" target="_blank" href="#">
-                                        View on github
-                                    </a>
                                 </div>
+                            </li>
+                            <li class="card__item">
+                                <div class="profile">
+                                    <div class="profile__avatar">
+                                        <img class="profile__img" src="https://placehold.it/200x200"
+                                             alt="profile image">
+                                    </div>
+                                    <div class="profile__info">
+                                        <div class="profile__name profile__name--lg">
+                                            John Doe
+                                            <span class="profile__username">(kingstuffy)</span>
+                                        </div>
+                                        <a class="profile__github-link" target="_blank" href="#">
+                                            View on github
+                                        </a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="card__item">
+                                <div class="profile">
+                                    <div class="profile__avatar">
+                                        <img class="profile__img" src="https://placehold.it/200x200"
+                                             alt="profile image">
+                                    </div>
+                                    <div class="profile__info">
+                                        <div class="profile__name profile__name--lg">
+                                            John Doe
+                                            <span class="profile__username">(kingstuffy)</span>
+                                        </div>
+                                        <a class="profile__github-link" target="_blank" href="#">
+                                            View on github
+                                        </a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="card__item">
+                                <div class="profile">
+                                    <div class="profile__avatar">
+                                        <img class="profile__img" src="https://placehold.it/200x200"
+                                             alt="profile image">
+                                    </div>
+                                    <div class="profile__info">
+                                        <div class="profile__name profile__name--lg">
+                                            John Doe
+                                            <span class="profile__username">(kingstuffy)</span>
+                                        </div>
+                                        <a class="profile__github-link" target="_blank" href="#">
+                                            View on github
+                                        </a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="alert alert--danger alert--top alert--hidden">
+                            <div class="alert__message">
+                                An error occurred on the server
                             </div>
-                        </li>
-                    </ul>
-                    <div class="alert alert--danger alert--top">
-                        <div class="alert__message">
-                            An error occurred on the server
+                            <a class="alert__dismiss">x</a>
                         </div>
-                        <a class="alert__dismiss">x</a>
+                        <div class="card__extra">
+                            <button class="app__btn" value="Search">
+                                Load More
+                            </button>
+                        </div>
                     </div>
-                    <div class="card__extra">
-                        <button class="app__btn" value="Search">
-                            Load More
-                        </button>
+                    <div class="card__content--empty">
+                        <div class="empty-state">
+                            <div class="empty-state__icon">
+
+                            </div>
+                            <div class="empty-state__message">
+                                No followers found
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
