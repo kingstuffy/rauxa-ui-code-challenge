@@ -122,7 +122,7 @@ var followersApp = {
     }
 
     function onLoadMoreStart() {
-        ffLoadMore.textContent = '...fetching more followers';
+        ffLoadMore.textContent = '...fetching more';
         ffLoadMore.setAttribute('disabled', 'disabled');
     }
 
