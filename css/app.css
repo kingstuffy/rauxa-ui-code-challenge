@@ -130,11 +130,23 @@ body {
     margin-bottom: 17px;
 }
 
+.results__user {
+    display: none;
+}
+
+.results__user-none {
+    display: none;
+}
+
+.results__ff {
+    display: none;
+}
+
 .results__ff-none {
     display: none;
 }
 
-.results__ff-loading {
+.results__ff-loader {
     display: none;
 }
 
@@ -221,6 +233,7 @@ body {
     margin-right: 10px;
     text-transform: uppercase;
     font-size: 0.9rem;
+    cursor: pointer;
 }
 
 .alert {
@@ -250,8 +263,10 @@ body {
 
 .alert__dismiss {
     position: absolute;
-    right: 15px;
-    top: 15px;
+    right: 0px;
+    top: 0px;
+    cursor: pointer;
+    padding: 15px;
 }
 
 .state {
