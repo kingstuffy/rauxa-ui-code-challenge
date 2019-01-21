@@ -34,9 +34,10 @@ var followersApp = {
     var ffResultsEl = resultsEl.querySelector('.results__ff');
     var ffNoneEl = resultsEl.querySelector('.results__ff-none');
     var ffLoader = resultsEl.querySelector('.results__ff-loader');
+    var ffLoadMore = ffResultsEl.querySelector('.results__ff-more');
     var ffList = ffResultsEl.querySelector('.card__list');
 
-    var mainAppCallBack = function () {
+    var fetchUser = function () {
     };
 
     searchInput.addEventListener('onkeypress', trimInput);
@@ -45,8 +46,8 @@ var followersApp = {
         dismissSearchAlert();
     });
 
-    function initSearch(callback) {
-        mainAppCallBack = callback;
+    function initSearch(fetchUserCb, fetchFollowersCb) {
+        fetchUser = fetchUserCb;
 
         searchBtn.addEventListener('click', function (e) {
             e.preventDefault();
@@ -58,8 +59,15 @@ var followersApp = {
                 return;
             }
 
-            callback(searchInput.value);
+            fetchUserCb(searchInput.value);
             onSearchStart();
+        });
+
+        ffLoadMore.addEventListener('click', function (e) {
+            e.preventDefault();
+            var url = ffLoadMore.getAttribute('data-url');
+            fetchFollowersCb(url);
+            onLoadMoreStart();
         });
     }
 
@@ -74,11 +82,13 @@ var followersApp = {
     function onSearchStart() {
         searchLoader.style.display = 'block';
         resultsEl.style.display = 'none';
+        dismissSearchAlert();
     }
 
     function onSearchEnd(user) {
         searchLoader.style.display = 'none';
         resultsEl.style.display = 'block';
+        ffList.innerHTML = '';
 
         if (!user) {
             userResultsEl.style.display = 'none';
@@ -111,18 +121,32 @@ var followersApp = {
         populateFollowers(followers);
     }
 
+    function onLoadMoreStart() {
+        ffLoadMore.textContent = '...fetching more followers';
+        ffLoadMore.setAttribute('disabled', 'disabled');
+    }
+
+    function onLoadMoreEnd(followers) {
+        ffLoadMore.textContent = 'Load More';
+        ffLoadMore.removeAttribute('disabled');
+
+        if (!followers.length) {
+            return;
+        }
+        populateFollowers(followers);
+    }
+
     function populateUser(user) {
         userImg.setAttribute('src', user.avatar_url);
         userName.innerHTML = user.name
             ? (user.name + ' <span class="profile__username">(' + user.login + ')</span>')
             : user.login;
-        userRepos.textContent = user.public_repos;
-        userFollowers.textContent = user.followers + ' follower(s) / Following ' + user.following;
+        userRepos.textContent = user.public_repos.toLocaleString() + ' repo(s)';
+        userFollowers.textContent = user.followers.toLocaleString() + ' follower(s) / Following ' + user.following.toLocaleString();
         userGithub.setAttribute('href', user.html_url);
     }
 
     function populateFollowers(followers) {
-        ffList.innerHTML = null;
         followers.forEach(function (follower) {
             var item = document.createElement('li');
             item.classList.add('card__item');
@@ -151,7 +175,7 @@ var followersApp = {
             profileLink.textContent = 'View profile';
             profileLink.addEventListener('click', function (e) {
                 e.preventDefault();
-                mainAppCallBack(follower.login);
+                fetchUser(follower.login);
                 onSearchStart();
             });
 
@@ -185,12 +209,24 @@ var followersApp = {
         searchAlert.style.display = 'none';
     }
 
+    function hideLoadMore() {
+        ffLoadMore.style.display = 'none';
+    }
+
+    function showLoadMore(url) {
+        ffLoadMore.setAttribute('data-url', url);
+        ffLoadMore.style.display = 'inline-block';
+    }
+
     app.display.initSearch = initSearch;
     app.display.onSearchEnd = onSearchEnd;
     app.display.onFollowersLoadStart = onFollowersLoadStart;
     app.display.onFollowersLoadEnd = onFollowersLoadEnd;
+    app.display.onLoadMoreEnd = onLoadMoreEnd;
     app.display.showSearchError = showSearchError;
     app.display.showSearchSuccess = showSearchSuccess;
+    app.display.showLoadMore = showLoadMore;
+    app.display.hideLoadMore = hideLoadMore;
 
 })(followersApp);
 
@@ -223,7 +259,9 @@ var followersApp = {
                 return response.json()
             })
             .then(function (json) {
-                var nextUrl = getLinks(lastResponse.headers.get('link')).next;
+                var links = getLinks(lastResponse.headers.get('link'));
+                var nextUrl = links._next;
+                console.log(links, nextUrl);
                 if (lastResponse.status === 200) {
                     onFollowersFetch(null, json, nextUrl);
                     return;
@@ -236,10 +274,14 @@ var followersApp = {
 
     function getLinks(responseLink) {
         var links = {};
+        if (!responseLink) {
+            return links;
+        }
+
         responseLink.split(',').forEach(function (linkComp) {
             var url = linkComp.substring(linkComp.indexOf('<') + 1, linkComp.indexOf('>'));
-            var rel = linkComp.substring(linkComp.indexOf('rel="') + 4).replace('"', '');
-            links[rel] = url;
+            var rel = linkComp.substring(linkComp.indexOf('rel="') + 5).replace('"', '');
+            links['_' + rel] = url;
         });
 
         return links;
@@ -253,9 +295,15 @@ var followersApp = {
 
 (function main(app) {
 
-    app.display.initSearch(function (query) {
+    app.display.initSearch(fetchUser, fetchMoreFollowers);
+
+    function fetchUser(query) {
         app.api.fetchUser(query, onUserFetch);
-    });
+    }
+
+    function fetchMoreFollowers(url) {
+        app.api.fetchFollowers(url, onMoreFollowersFetch);
+    }
 
     function onUserFetch(err, user) {
         if (err) {
@@ -263,13 +311,12 @@ var followersApp = {
             app.display.onSearchEnd();
             return;
         }
-        console.log(err, user);
 
         app.display.onSearchEnd(user);
         app.api.fetchFollowers(user.followers_url, onFollowersFetch);
     }
 
-    function onFollowersFetch(err, followers) {
+    function onFollowersFetch(err, followers, nextUrl) {
         if (err) {
             app.display.showSearchError(err.message);
             app.display.onFollowersLoadEnd();
@@ -277,6 +324,25 @@ var followersApp = {
         }
 
         app.display.onFollowersLoadEnd(followers);
+
+        if (nextUrl) {
+            app.display.showLoadMore(nextUrl);
+        } else {
+            app.display.hideLoadMore(nextUrl);
+        }
+    }
+
+    function onMoreFollowersFetch(err, followers, nextUrl) {
+        if (err) {
+            return;
+        }
+
+        app.display.onLoadMoreEnd(followers);
+        if (nextUrl) {
+            app.display.showLoadMore(nextUrl);
+        } else {
+            app.display.hideLoadMore(nextUrl);
+        }
     }
 
 })(followersApp);
